@@ -18,11 +18,7 @@ class _WelcomePageState extends State<WelcomePage> {
           children: [
             Text(
               "Waste\nMap",
-              style: GoogleFonts.handjet(
-                fontSize: 64,
-                height: 0,
-                letterSpacing: 2,
-              ),
+              style: GoogleFonts.handjet(fontSize: 56, height: 0.8, letterSpacing: 2),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 15),
@@ -32,7 +28,7 @@ class _WelcomePageState extends State<WelcomePage> {
               width: 250,
               height: 50,
               decoration: const BoxDecoration(
-                color: Colors.green,
+                color: Colors.blue,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               child: IconButton(
@@ -40,7 +36,9 @@ class _WelcomePageState extends State<WelcomePage> {
                   "Login",
                   style: GoogleFonts.inder(color: Colors.white),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed("/login");
+                },
               ),
             ),
             const SizedBox(height: 10),
@@ -54,7 +52,9 @@ class _WelcomePageState extends State<WelcomePage> {
                   "Não tem conta? Cadastre-se",
                   style: GoogleFonts.inder(color: Colors.white),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed("/signup");
+                },
               ),
             ),
           ],

@@ -1,0 +1,105 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:waste_map/partials/custom_button.dart';
+import 'package:waste_map/partials/icon_text_button.dart';
+import 'package:waste_map/repos/service_repo.dart';
+
+class DropoutPage extends StatefulWidget {
+  const DropoutPage({super.key});
+
+  @override
+  State<DropoutPage> createState() => _DropoutPageState();
+}
+
+class _DropoutPageState extends State<DropoutPage> {
+  List<String> selected_services = [];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(10),
+        child: Center(
+          child: Form(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("CENTRO DE RECICLAGEM", style: GoogleFonts.handjet(color: Colors.white, fontSize: 48, height: 1)),
+                SizedBox(height: 30),
+                IconTextButton(
+                  icon: LucideIcons.mapPin,
+                  text: "Endereço",
+                  onTap: () {},
+                ),
+                SizedBox(height: 30),
+                Text(
+                  "SELECIONE OS TIPOS DE SERVIÇO FORNECIDOS",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inder(color: Colors.white, fontSize: 18, height: 1),
+                ),
+                SizedBox(height: 15),
+                Container(
+                  width: 500,
+                  height: 300,
+                  child: GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisExtent: 60,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                    ),
+                    itemCount: Materials.values.length,
+                    itemBuilder: (context, index) {
+                      var material = Materials.values[index];
+
+                      return Container(
+                        width: 250,
+                        decoration: BoxDecoration(
+                          color: materials_color[material],
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
+                        child: IconButton(
+                          onPressed: () {
+                            if (selected_services.contains(material.name)) {
+                              selected_services.remove(material.name);
+                            } else {
+                              selected_services.add(material.name);
+                            }
+                            setState(() {});
+                          },
+                          icon: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                (selected_services.contains(material.name))
+                                    ? CupertinoIcons.checkmark_circle_fill
+                                    : CupertinoIcons.circle_fill,
+                                color: Colors.black45,
+                                size: 24,
+                              ),
+                              SizedBox(width: 10),
+                              Text(material.name,
+                                  style: GoogleFonts.inder(color: Colors.black, fontSize: 18, height: 1)),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 10),
+                CustomButton(
+                  width: 200,
+                  child: Text("CADASTAR", style: GoogleFonts.inder(color: Colors.white, fontSize: 18, height: 1)),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
