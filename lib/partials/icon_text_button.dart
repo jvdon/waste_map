@@ -6,7 +6,14 @@ class IconTextButton extends StatelessWidget {
   final String text;
   final Function() onTap;
   final double width;
-  const IconTextButton({super.key, required this.icon, required this.text, required this.onTap, this.width = 200});
+  final bool highlighted;
+  const IconTextButton(
+      {super.key,
+      required this.icon,
+      required this.text,
+      required this.onTap,
+      this.highlighted = false,
+      this.width = 200});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +21,7 @@ class IconTextButton extends StatelessWidget {
       width: width,
       height: width / 5,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.blue),
+        border: Border.all(color: (highlighted) ? Colors.red : Colors.blue),
         borderRadius: const BorderRadius.all(Radius.circular(15)),
       ),
       child: Center(
@@ -28,7 +35,9 @@ class IconTextButton extends StatelessWidget {
               SizedBox(width: 10),
               Icon(icon, color: Colors.blue),
               SizedBox(width: 10),
-              Text(text, style: GoogleFonts.inder(color: Colors.white, fontSize: 20, height: 1)),
+              Text(text,
+                  style: GoogleFonts.inder(
+                      color: Colors.white, fontSize: 20, height: 1)),
             ],
           ),
         ),

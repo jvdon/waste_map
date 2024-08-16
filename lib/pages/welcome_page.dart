@@ -21,6 +21,11 @@ class _WelcomePageState extends State<WelcomePage> {
               style: GoogleFonts.handjet(fontSize: 56, height: 0.8, letterSpacing: 2),
               textAlign: TextAlign.center,
             ),
+            Text(
+              "Coleta Tech\nEnterprise",
+              style: GoogleFonts.handjet(fontSize: 56, height: 0.8, letterSpacing: 2),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 15),
             const Text("Conectando o mundo para um futuro sem lixo"),
             const SizedBox(height: 5),
